@@ -3,99 +3,209 @@
 <html>
     <head>
         <title>College Rankings Project</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
-        <h1>What Factors Play the Most Significant Role in Determining College Rankings?</h1>
-        <h3>By: Srikumar Akella and Nishant Chintala</h3>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">What Factors Play the Most Significant Role in Determining College Rankings?</h1>
+                <br>
+                <p class="lead">By: Srikumar Akella and Nishant Chintala</p>
+            </div>
+        </div>
+        <div class="card container">
+            <h5 class="card-header">What was our goal with this project?</h5>
+            <div class="card-body">
+                <h5 class="card-title">Motivation</h5>
+                <p>
+                    When we were initially considering what project to do, we knew we wanted to look into something that we
+                    already had some background knowledge about. We stumbled upon a Kaggle dataset that contained information
+                    about college ranking systems and we knew right off the bat that this was research that we would like to
+                    learn more about.
+        
+                    Our main goal of this project was to determine what factors are considered more important than others when
+                    ranking colleges and universities and create a new ranking system based on those factors. The Kaggle
+                    consisted of the Times Higher Education World University Ranking, the Academic Ranking of World
+                    Universities, and the Center for World University Rankings datasets. In conducting our research, we had
+                    three key questions that we wanted to explore. What factors had more of an influence on the overall ranking
+                    of the universities than others? What are the most common/least common metrics used between the different
+                    rankings? Would the rankings change significantly if we combined all the significant factors from each of
+                    the three datasets into one ranking system?
+                </p>
+            </div>
+        </div>
+
         <br>
-        <h2>What was our goal with this project?</h2>
-        <p>When we were initially considering what project to do, we knew we wanted to look into something that we already had some background knowledge about. We stumbled upon a Kaggle dataset that contained information about college ranking systems and we knew right off the bat that this was research that we would like to learn more about. 
 
-            Our main goal of this project was to determine what factors are considered more important than others when ranking colleges and universities and create a new ranking system based on those factors. The Kaggle consisted of the Times Higher Education World University Ranking, the Academic Ranking of World Universities, and the Center for World University Rankings datasets. In conducting our research, we had three key questions that we wanted to explore. What factors had more of an influence on the overall ranking of the universities than others? What are the most common/least common metrics used between the different rankings? Would the rankings change significantly if we combined all the significant factors from each of the three datasets into one ranking system?
-        </p>
-        <h2>Our process of data collection:</h2>
-        <p>
-            We obtained the data from <a href="https://www.kaggle.com/mylesoneill/world-university-rankings?select=timesData.csv" target = "_blank">Kaggle</a>. The data consisted of the Times Higher Education World University Ranking, the Academic Ranking of World Universities (Shanghai Ranking), and the Center for World University Rankings. Each of the different rankings had different factors.
+        <div class="card container">
+            <h5 class="card-header">Our process of data collection:</h5>
+            <div class="card-body">
+                <p>
+                    We obtained the data from <a
+                        href="https://www.kaggle.com/mylesoneill/world-university-rankings?select=timesData.csv"
+                        target="_blank">Kaggle</a>. The data consisted of the Times Higher Education World University Ranking,
+                    the Academic Ranking of World Universities (Shanghai Ranking), and the Center for World University Rankings.
+                    Each of the different rankings had different factors.
+        
+                    The Times ranking system had a teaching score, international score, research score, citations score, income
+                    score, and a total score. The teaching score is a number that represents the teaching/learning environment
+                    of the university. The international score represents the percentage of international students on campus.
+                    The research score represents the quality of research and number of publications that each university has.
+                    The citations score is similar to the research score. However, the citations score measures how many times
+                    the university’s research is cited. The income score measures the income levels of the university graduates.
+                    Finally, the total score takes into account all the other scores mentioned above and is ultimately used to
+                    determine the world ranking of the university.
+        
+                    The Shanghai ranking consists of national rank, alumni score, award score, HiCi score, N&S score, PUB score,
+                    PCP score, and a total score. The national rank is where the university ranks within its domestic country.
+                    The alumni score represents the number of alumni that end up winning prizes and awards in their field. The
+                    award score represents the number of faculty and staff that win prizes and awards in their field. The HiCi
+                    score represents the number of Highly Cited researchers the university has. The N&S score represents the
+                    number of papers published in Nature and Science. The PUB score measures the number of papers indexed in
+                    Science Citation Index-Expanded and Social Science Citation. The PCP score is a weighted score of the above
+                    five scores divided by the number of full time academic staff. Finally, the total score represents a score
+                    that encompasses all the other scores and is used to determine the ranking of the university.
+        
+                    The CWUR system includes national rank, quality of education rank, alumni employment rank, quality of
+                    faculty rank, publications rank, influence rank, and citations rank. This dataset is ordinal, meaning that
+                    each of those categories is a rank for that university rather than a score.
+                </p>
+            </div>
+        </div>
+        
+        <br>
 
-The Times ranking system had a teaching score, international score, research score, citations score, income score, and a total score. The teaching score is a number that represents the teaching/learning environment of the university. The international score represents the percentage of international students on campus. The research score represents the quality of research and number of publications that each university has. The citations score is similar to the research score. However, the citations score measures how many times the university’s research is cited. The income score measures the income levels of the university graduates. Finally, the total score takes into account all the other scores mentioned above and is ultimately used to determine the world ranking of the university. 
+        <div class="card container">
+            <h5 class="card-header">Data analysis, exploration, visualization, arrangement, patterns, and extract features</h5>
+            <div class="card-body">
+                <h5 class="card-title">Data Preprocessing</h5>
+                <p class="card-text">
+                    For The Times ranking system, we chose to not include data from before 2016 in order to
+                    reflect the latest information. Some of the universities were missing data for certain categories, and we
+                    replaced those missing data points with mean values. In total, we analyzed 200 universities.
+        
+                    From the The Shanghai ranking, we chose not to include data before 2015 as wanted to have the latest
+                    information. We also replaced any missing values with the mean value for that category. In total, 100
+                    universities were analyzed.
+        
+                    The CWUR system, in order to perform a linear regression on this data, we needed to convert it to continuous
+                    data. In addition, some universities had missing data and were not used in the analysis. In total, we used
+                    2001 records for the analysis.
+                </p>
+                <h5 class="card-title">Data Analysis</h5>
+                <p class="card-text">
+                    Correlation analysis is done on the data for all the 3 datasets to analyze the correlation between different variables of the dataset, before doing the regression analysis. Below are the heat maps and the inferences.
+                </p>
+                <h6 class = "card-title">Times Ranking System</h6>
+                <img src = "images/timescorrplot.png">
+                <p>Teaching, Research, and Citations are the most correlated with world rank.</p>
+                <h6 class = "card-title">Shanghai Ranking System</h6>
+                <img src = "images/shanghaicorrplot.png">
+                <p>N&S Score, HiCi Score, Award Score, Alumni Score, and Publication Scores are the most correlated with world rank.</p>
+                <h6 class = "card-title">CWUR System</h6>
+                <img src = "images/cwurcorrplot.png">
+                <p>Publications, Broad Impact, Influence, and Citations are the most correlated with world rank.</p>
+            </div>
+        </div>
 
-The Shanghai ranking consists of national rank, alumni score, award score, HiCi score, N&S score, PUB score, PCP score, and a total score. The national rank is where the university ranks within its domestic country. The alumni score represents the number of alumni that end up winning prizes and awards in their field. The award score represents the number of faculty and staff that win prizes and awards in their field. The HiCi score represents the number of Highly Cited researchers the university has. The N&S score represents the number of papers published in Nature and Science. The PUB score measures the number of papers indexed in Science Citation Index-Expanded and Social Science Citation. The PCP score is a weighted score of the above five scores divided by the number of full time academic staff. Finally, the total score represents a score that encompasses all the other scores and is used to determine the ranking of the university. 
+        <br>
 
-The CWUR system includes national rank, quality of education rank, alumni employment rank, quality of faculty rank, publications rank, influence rank, and citations rank. This dataset is ordinal, meaning that each of those categories is a rank for that university rather than a score.
+        <div class="card container">
+            <h5 class="card-header">Model Data: Training, Classification, Inference, Linear Regression</h5>
+            <div class="card-body">
+                <h5 class="card-title">Data Model</h5>
+                <p class="card-text">
+                    We have built Linear Regression models in R with Total Score as the Class variable and other variables as
+                    predictor variables. We used 80:20 train:test ratio and Stepwise regression to eliminate the less
+                    significant predictor variables.
+                </p>
+                <h5 class="card-title">Times Ranking System</h5>
+                <p class="card-text">
+                    Teaching, International students, research, citations, income, student_staff_ratio are included in the final
+                    model. Model fit is good with multiple R squared 0.9999. Model is performing good on the test data with RMSE
+                    0.1145.
+                </p>
+                <img src="images/timeslinregresults.png">
+                <img src="images/timesRMSEAndR2.png">
+                <img src="images/timesModelPerformance.png">
+                <br/>
+                <br/>
+                <br/>
+                <h5 class="card-title">Shanghai Ranking System</h5>
+                <p class="card-text">
+                    Alumni, award, HiCi, N&S, pub, pcp are included in the final model. Model fit is good with multiple R squared 1. Model is performing good on the test data with RMSE 0.0367.
+                </p>
+                <img src = "images/shanghailinregresults.png">
+                <img src = "images/shanghaiRMSEAndR2.png">
+                <img src = "images/shanghaiModelPerformance.png">
+                <br/>
+                <br/>
+                <br/>
+                <h5 class="card-title">CWUR System</h5>
+                <p class="card-text">
+                    National rank, Quality of Education, Alumni Employment, Quality of Faculty, Broad Impact and patents are included in the final model. Model fit is not very good with multiple R squared 0.5852, as the data is not linear. Model is performing bad on the test data with RMSE 4.2162. Poor performance of the data is because of non linearity of data for higher total scores as displayed below in the plot.
+                </p>
+                <img src = "images/cwurlinregresults.png">
+                <img src = "images/cwurRMSEAndR2.png">
+                <img src = "images/cwurModelPerformance.png">
+            </div>
+        </div>
 
-        </p>
-        <h2>Data analysis, exploration, visualization, arrangement, patterns, and extract features</h2>
-        <h3>Data Preprocessing</h3>
-        <p>For The Times ranking system, we chose to not include data from before 2016 in order to reflect the latest information. Some of the universities were missing data for certain categories, and we replaced those missing data points with mean values. In total, we analyzed 200 universities.
+        <div class="card container">
+            <h5 class="card-header">Final outcome: data interpretation, outcomes, and analysis</h5>
+            <div class="card-body">
+                <p class="card-text">
+                    We have implemented a new model using all the significant parameters from 3 models. No learning can be applied on the data for combined model as this is a new model with no class value (Total Score) available. As the Total Scores and other parameters in all the 3 models are similarly scaled, while building the model, we used the same coefficients to build a new model using all the parameters from 3 datasets dropping the intercepts. New total score is calculated from the model, which can be used to re-rank the universities based on the new score. Below is a sample list of university rankings in all 3 ranking systems and the corresponding reranked list of the universities, based on the new total score.
+                </p>
+                <h5 class="card-title">Times Rankings</h5>
+                <img src = "images/timesExcelRanking.PNG" width="1050">
+                <h5 class="card-title">Shanghai Rankings</h5>
+                <img src = "images/shanghaiExcelRanking.PNG">
+                <h5 class="card-title">CWUR System</h5>
+                <img src = "images/cwurExcelRanking.PNG" width = "1050">
+                <h5 class="card-title">Combined Model Using Our Results and Analysis:</h5>
+                <img src = "images/newExcelRanking.PNG">
+            </div>
+        </div>
 
-            From the The Shanghai ranking, we chose not to include data before 2015 as wanted to have the latest information. We also replaced any missing values with the mean value for that category. In total, 100 universities were analyzed.
-            
-            The CWUR system, in order to perform a linear regression on this data, we needed to convert it to continuous data. In addition, some universities had missing data and were not used in the analysis. In total, we used 2001 records for the analysis.
-        </p>
-        <h3>Data Analysis</h3>
-        <p>Correlation analysis is done on the data for all the 3 datasets to analyze the correlation between different variables of the dataset, before doing the regression analysis. Below are the heat maps and the inferences.</p>
-        <h4>Times Ranking System</h4>
-        <img src = "images/timescorrplot.png">
-        <h5>Factors highly correlated with world rank:</h5>
-        <li>Teaching</li>
-        <li>Research</li>
-        <li>Citations</li>
-        <h4>Shanghai Ranking System</h4>
-        <img src = "images/shanghaicorrplot.png">
-        <h5>Factors highly correlated with world rank:</h5>
-        <li>N&S Score</li>
-        <li>HiCi Score</li>
-        <li>Award Score</li>
-        <li>Alumni/Publication Score</li>
-        <h4>CWUR System</h4>
-        <img src = "images/cwurcorrplot.png">
-        <h5>Factors highly correlated with world rank:</h5>
-        <li>Publications</li>
-        <li>Broad Impact</li>
-        <li>Influence</li>
-        <li>Citations</li>
-        <h2>Model Data: Training, Classification, Inference, Linear Regression</h2>
-        <h3>Data Model</h3>
-        <p>We have built Linear Regression models in R with Total Score as the Class variable and other variables as predictor variables. We used 80:20 train:test ratio and Stepwise regression to eliminate the less significant predictor variables.</p>
-        <h4>Times Ranking System</h4>
-        <p>Teaching, International students, research, citations, income, student_staff_ratio are included in the final model. Model fit is good with multiple R squared 0.9999. Model is performing good on the test data with RMSE 0.1145.</p>
-        <img src = "images/timeslinregresults.png">
-        <img src = "images/timesRMSEAndR2.png">
-        <img src = "images/timesModelPerformance.png">
-        <h4>Shanghai Ranking System</h4>
-        <p>Alumni, award, HiCi, N&S, pub, pcp are included in the final model. Model fit is good with multiple R squared 1. Model is performing good on the test data with RMSE 0.0367.</p>
-        <img src = "images/shanghailinregresults.png">
-        <img src = "images/shanghaiRMSEAndR2.png">
-        <img src = "images/shanghaiModelPerformance.png">
-        <h4>CWUR System</h4>
-        <p>National rank, Quality of Education, Alumni Employment, Quality of Faculty, Broad Impact and patents are included in the final model. Model fit is not very good with multiple R squared 0.5852, as the data is not linear. Model is performing bad on the test data with RMSE 4.2162. Poor performance of the data is because of non linearity of data for higher total scores as displayed below in the plot.</p>
-        <img src = "images/cwurlinregresults.png">
-        <img src = "images/cwurRMSEAndR2.png">
-        <img src = "images/cwurModelPerformance.png">
+        <br/>
 
-        <h2>Final outcome: data interpretation, outcomes, and analysis</h2>
-        <p>We have implemented a new model using all the significant parameters from 3 models. No learning can be applied on the data for combined model as this is a new model with no class value (Total Score) available. As the Total Scores and other parameters in all the 3 models are similarly scaled, while building the model, we used the same coefficients to build a new model using all the parameters from 3 datasets dropping the intercepts. New total score is calculated from the model, which can be used to re-rank the universities based on the new score. Below is a sample list of university rankings in all 3 ranking systems and the corresponding reranked list of the universities, based on the new total score.</p>
-        <h3>Times Rankings</h3>
-        <img src = "images/timesExcelRanking.PNG">
-        <h3>Shanghai Rankings</h3>
-        <img src = "images/shanghaiExcelRanking.PNG">
-        <h3>CWUR System</h3>
-        <img src = "images/cwurExcelRanking.PNG">
-        <h3>Combined Model Using Our Results and Analysis:</h3>
-        <img src = "images/newExcelRanking.PNG">
-
-        <h2>Concluding Remarks</h2>
-        <h3>The three key questions that we initially had were the following:</h3>
-        <li>What factors had more of an influence on the overall ranking of the universities than others?</li>
-        <li>What are the most common/least common metrics used between the different rankings?</li>
-        <li>Would the rankings change significantly if we combined all the significant factors from each of the three datasets into one ranking system?</li>
-        <p>In the Times ranking, we found that the factors that are highly correlated with world rank are the teaching score, the research score, and the citations score. In the linear regression equation that we found, these three variables had the most effect on world rankings. In the CWUR system, we saw that the factors with the most correlation with world rankings are publications, broad impact, influence, and citations. The correlation numbers for these categories were relatively low, as the data was more holistic in nature. In doing the regression analysis for the CWUR system, we saw that the R-squared value was only 0.58, which is inconclusive. For the Shanghai ranking, we saw that the factors with the highest correlation with world ranking were N&S score, HiCi score, award score, alumni score, and the publication score. The N&S score and HiCi scores were the strongest contributors to the total variance in world rankings.</p>
-        <p>As far as the most common metrics used between the different rankings, we definitely saw that research, publications, and citations were used in all the systems in one way or another. All of these rankings emphasize the university’s ability to produce publications and also have them cited in other studies. As for the least common metrics, we saw that an income score was in the Times rankings although it could be a fairly important factor for some prospective students.</p>
-        <p>We also observed that the rankings did not change significantly in our combined model.for the most part, the colleges and universities that were at the top of our combined model were typically at the top of each of the three rankings. As a result, we think that our combined model does a good job of using the key factors from each of the other three models to create an overall ranking for the colleges and universities.</p>
-        <h3>Learning Outcomes:</h3>
-        <li>Back when we were both looking for our own undergraduate programs, we both looked into rankings. However, neither of us understood exactly what goes into the calculation of the rankings. Now, we realize that a lot of the focus for the rankings is on research, publications, and citations. If we were to have guessed before doing this research, we would have assumed that factors such as graduation rate, alumni employment, and alumni salary would be among some of the most important factors.</li>
-        <li>Another learning outcome was using R. We had learned R briefly in the past, but we were able to re-educate ourselves on some of the core principles of the language through this project. R is a great language for data analysis in particular, as it made it incredibly easy to perform regression analysis, correlation plots, and much more with relatively few lines of code.</li>
-        <li>Finally, we learned that rankings are not necessarily the ultimatum. These rankings focus on a few factors, almost exclusively. In order to determine what college or university is the best fit for you, you need to identify which factors are the most important to you and find a university that prides itself on being the best in those categories. There are definitely other ranking systems out there that may focus on alternate factors, and it would have been interesting to create a combined model with those. However, we learned that ultimately, personal fit is what will determine how great that college will be for you.</li>
+        <div class="card container">
+            <h5 class="card-header">Concluding Remarks</h5>
+            <div class="card-body">
+              <h5 class="card-title">Intial Three Key Questions</h5>
+              <li>
+                What factors had more of an influence on the overall ranking of the universities than others?
+              </li>
+              <li>
+                What are the most common/least common metrics used between the different rankings?
+              </li>
+              <li>
+                Would the rankings change significantly if we combined all the significant factors from each of the three datasets into one ranking system?
+              </li>
+              <br/>
+              <p class="card-text">
+                In the Times ranking, we found that the factors that are highly correlated with world rank are the teaching score, the research score, and the citations score. In the linear regression equation that we found, these three variables had the most effect on world rankings. In the CWUR system, we saw that the factors with the most correlation with world rankings are publications, broad impact, influence, and citations. The correlation numbers for these categories were relatively low, as the data was more holistic in nature. In doing the regression analysis for the CWUR system, we saw that the R-squared value was only 0.58, which is inconclusive. For the Shanghai ranking, we saw that the factors with the highest correlation with world ranking were N&S score, HiCi score, award score, alumni score, and the publication score. The N&S score and HiCi scores were the strongest contributors to the total variance in world rankings.
+                <br/>
+                <br/>
+                As far as the most common metrics used between the different rankings, we definitely saw that research, publications, and citations were used in all the systems in one way or another. All of these rankings emphasize the university’s ability to produce publications and also have them cited in other studies. As for the least common metrics, we saw that an income score was in the Times rankings although it could be a fairly important factor for some prospective students.
+                <br/>
+                <br/>
+                We also observed that the rankings did not change significantly in our combined model.for the most part, the colleges and universities that were at the top of our combined model were typically at the top of each of the three rankings. As a result, we think that our combined model does a good job of using the key factors from each of the other three models to create an overall ranking for the colleges and universities.
+              </p>
+              <br/>
+              <h5 class="card-title">Learning Outcomes:</h5>
+              <p>
+                Back when we were both looking for our own undergraduate programs, we both looked into rankings. However, neither of us understood exactly what goes into the calculation of the rankings. Now, we realize that a lot of the focus for the rankings is on research, publications, and citations. If we were to have guessed before doing this research, we would have assumed that factors such as graduation rate, alumni employment, and alumni salary would be among some of the most important factors.
+                <br/>
+                <br/>
+                Another learning outcome was using R. We had learned R briefly in the past, but we were able to re-educate ourselves on some of the core principles of the language through this project. R is a great language for data analysis in particular, as it made it incredibly easy to perform regression analysis, correlation plots, and much more with relatively few lines of code.
+                <br/>
+                <br/>
+                Finally, we learned that rankings are not necessarily the ultimatum. These rankings focus on a few factors, almost exclusively. In order to determine what college or university is the best fit for you, you need to identify which factors are the most important to you and find a university that prides itself on being the best in those categories. There are definitely other ranking systems out there that may focus on alternate factors, and it would have been interesting to create a combined model with those. However, we learned that ultimately, personal fit is what will determine how great that college will be for you.
+              </p>
+            </div>
+          </div>
     
     </body>
 </html>
