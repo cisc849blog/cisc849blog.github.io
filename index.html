@@ -46,7 +46,8 @@
                         target="_blank">Kaggle</a>. The data consisted of the Times Higher Education World University Ranking,
                     the Academic Ranking of World Universities (Shanghai Ranking), and the Center for World University Rankings.
                     Each of the different rankings had different factors.
-        
+                    <br/>
+                    <br/>
                     The Times ranking system had a teaching score, international score, research score, citations score, income
                     score, and a total score. The teaching score is a number that represents the teaching/learning environment
                     of the university. The international score represents the percentage of international students on campus.
@@ -55,7 +56,8 @@
                     the university’s research is cited. The income score measures the income levels of the university graduates.
                     Finally, the total score takes into account all the other scores mentioned above and is ultimately used to
                     determine the world ranking of the university.
-        
+                    <br/>
+                    <br/>
                     The Shanghai ranking consists of national rank, alumni score, award score, HiCi score, N&S score, PUB score,
                     PCP score, and a total score. The national rank is where the university ranks within its domestic country.
                     The alumni score represents the number of alumni that end up winning prizes and awards in their field. The
@@ -65,7 +67,8 @@
                     Science Citation Index-Expanded and Social Science Citation. The PCP score is a weighted score of the above
                     five scores divided by the number of full time academic staff. Finally, the total score represents a score
                     that encompasses all the other scores and is used to determine the ranking of the university.
-        
+                    <br/>
+                    <br/>
                     The CWUR system includes national rank, quality of education rank, alumni employment rank, quality of
                     faculty rank, publications rank, influence rank, and citations rank. This dataset is ordinal, meaning that
                     each of those categories is a rank for that university rather than a score.
@@ -152,17 +155,23 @@
         </div>
 
         <div class="card container">
+            <h5 class="card-header">Rankings Prior to Adopting Our Combined Model</h5>
+            <div class="card-body">
+                <h5 class="card-title">Times Rankings</h5>
+                <img src="images/timesExcelRanking.PNG" width="1050">
+                <h5 class="card-title">Shanghai Rankings</h5>
+                <img src="images/shanghaiExcelRanking.PNG">
+                <h5 class="card-title">CWUR System</h5>
+                <img src="images/cwurExcelRanking.PNG" width="1050">
+            </div>
+        </div>
+
+        <div class="card container">
             <h5 class="card-header">Final outcome: data interpretation, outcomes, and analysis</h5>
             <div class="card-body">
                 <p class="card-text">
                     We have implemented a new model using all the significant parameters from 3 models. No learning can be applied on the data for combined model as this is a new model with no class value (Total Score) available. As the Total Scores and other parameters in all the 3 models are similarly scaled, while building the model, we used the same coefficients to build a new model using all the parameters from 3 datasets dropping the intercepts. New total score is calculated from the model, which can be used to re-rank the universities based on the new score. Below is a sample list of university rankings in all 3 ranking systems and the corresponding reranked list of the universities, based on the new total score.
                 </p>
-                <h5 class="card-title">Times Rankings</h5>
-                <img src = "images/timesExcelRanking.PNG" width="1050">
-                <h5 class="card-title">Shanghai Rankings</h5>
-                <img src = "images/shanghaiExcelRanking.PNG">
-                <h5 class="card-title">CWUR System</h5>
-                <img src = "images/cwurExcelRanking.PNG" width = "1050">
                 <h5 class="card-title">Combined Model Using Our Results and Analysis:</h5>
                 <img src = "images/newExcelRanking.PNG">
             </div>
